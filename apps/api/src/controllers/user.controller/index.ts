@@ -117,3 +117,12 @@ export const userLogin = async (req: Request, res: Response, next: NextFunction)
         next(error)
     }
 }
+
+export const keepAuthUser = async (req: Request, res: Response, next: NextFunction) => {
+    try {
+        const { userId } = req.body
+        
+    } catch (error) {
+        next(error)
+    }
+}

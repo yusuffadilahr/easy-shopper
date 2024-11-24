@@ -5,6 +5,8 @@ import { useMutation } from "@tanstack/react-query";
 import { instance } from "@/utils/axios.instance";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
+import { useDispatch } from "react-redux";
+import { getToken } from "@/redux/slice/authSlice";
 
 interface ILoginBody {
     email: string
@@ -12,6 +14,7 @@ interface ILoginBody {
 }
 
 export const useLoginHooks = () => {
+    const dispatch = useDispatch()
     const [isVisible, setIsVisible] = useState<boolean>(false)
     const router = useRouter()
     const { mutate: handleSubmitLogin, isPending } = useMutation({
@@ -22,6 +25,9 @@ export const useLoginHooks = () => {
         },
         onSuccess: (res) => {
             toast.success(res?.data?.message)
+            dispatch(getToken({
+                token: res?.data?.data?.token
+            }))
             // router.push('/login') * ganti ke dashboard
             console.log(res)
         },
