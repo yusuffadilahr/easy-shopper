@@ -16,8 +16,8 @@ export default function Page() {
                     <div className="w-full h-full flex justify-center items-center">
                         <Formik
                             initialValues={{
-                                email: '', /**template: bomude@polkaroad.net */
-                                password: '', /**template: @Tes123123 */
+                                email: '', /* *template: bomude@polkaroad.net */
+                                password: '', /* *template: @Tes123123 */
                             }}
                             validationSchema={loginValidation}
                             onSubmit={(values: any) => {

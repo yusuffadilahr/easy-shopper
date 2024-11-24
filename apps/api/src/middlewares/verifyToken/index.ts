@@ -12,10 +12,12 @@ export const tokenValidation = async (req: Request, res: Response, next: NextFun
 
         if (!token) throw { msg: 'Harap login terlebih dahulu', status: 406 }
 
-        const tokenVerify = await jwt.verify(token, jwt_secret)
+        const tokenVerify: any = await jwt.verify(token, jwt_secret)
         console.log(tokenVerify)
 
-        // req.body.userId = 
+        req.body.userId = tokenVerify?.data?.id
+        console.log(req.body, "<<< masuk ga")
+
     } catch (error) {
         next(error)
     }
