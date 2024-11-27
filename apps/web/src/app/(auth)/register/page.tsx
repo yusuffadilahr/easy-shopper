@@ -4,7 +4,8 @@ import { FaEye, FaEyeSlash } from 'react-icons/fa'
 import { registerValidation } from "@/features/register/schemas/registerSchemas";
 import { useRegisterHooks } from "@/features/register/hooks";
 import InputForm from "@/components/core/inputForm";
-
+import Image from "next/image";
+import Robby from "@/../public/images/robby.jpg";
 export default function Page() {
     const { isVisible, handleRegisterSubmit, isPending, handleVisiblePassword } = useRegisterHooks()
 
@@ -62,7 +63,9 @@ export default function Page() {
                         </Formik>
                     </div>
                 </div>
-                <div className="w-full  h-full bg-red-950"></div>
+                <div className="w-full  h-full bg-red-950">
+                    <Image src={Robby} alt="ahcapek" width={500} height={500} />
+                </div>
             </section>
         </main>
     );
